@@ -7,7 +7,7 @@ spec:
   - name: nginx
     image: nginx
   tolerations:
-  - key: "nginx-node"
+  - key: "project"
     operator: "Equal"
-    value: "true"
+    value: "expense"
     effect: "NoSchedule"
