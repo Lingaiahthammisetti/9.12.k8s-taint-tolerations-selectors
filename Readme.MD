@@ -1,3 +1,18 @@
+# Question: In Kubernetes, how do taints and tolerations work together, and why do tolerations not guarantee that a pod will be scheduled on a tainted node?
+🔄 How Taints & Tolerations Work Together
+Tolerations don’t guarantee scheduling on a tainted node — they only allow it. The scheduler still checks other conditions.
+
+🧠 Important Facts
+Tolerations do not attract pods to nodes. They only permit scheduling.
+If no toleration matches a taint, the pod will never be scheduled to that node.
+If a toleration does match, the scheduler then continues to evaluate:
+Node labels / selectors
+Node affinity/anti-affinity
+Resource availability (CPU, memory, etc.)
+Pod affinity/anti-affinity
+Constraints like topology spread, priority, etc.
+
+
 # Explain the following Kubernetes scheduling concepts briefly:
 # Taints & Tolerations
 # Node Affinity and Node Anti-Affinity
