@@ -1,62 +1,8 @@
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: with-node-affinity-required
-# spec:
-#   affinity:
-#     nodeAffinity:
-#       requiredDuringSchedulingIgnoredDuringExecution:
-#         nodeSelectorTerms:
-#         - matchExpressions:
-#           - key: project
-#             operator: In
-#             values:
-#             - expense  # This matches nodes labeled with project=expense
-#           - key: region
-#             operator: NotIn
-#             values:
-#             - us-west  # Exclude nodes in the us-west region
-
-#   containers:
-#   - name: with-node-affinity
-#     image: nginx
-
-#   tolerations:
-#   - key: "project"
-#     operator: "Equal"
-#     value: "expense"
-#     effect: "NoSchedule"
-#   - key: "project"
-#     operator: "Exists"
-#     effect: "NoSchedule"
-
-# To allow this pod to be scheduled on a tainted node, apply the taint to the desired node first:
-# 1. Get a list of nodes:
-#    kubectl get nodes
-# 2. Apply the taint to the target node:
-#    kubectl taint nodes ip-192-168-42-153.ec2.internal project=expense:NoSchedule
-# The tolerations defined above ensure the pod can still be scheduled on that node despite the taint.
-
-
-# First apply taint on specific node and then apply tolerations on it.
-# kubectl get nodes
-# kubectl taint nodes ip-192-168-42-153.ec2.internal project=expense:NoSchedule
-
-
-
 apiVersion: v1
 kind: Pod
 metadata:
-  name: with-node-affinity-required
+  name: with-node-affinity
 spec:
-  containers:
-  - name: nginx-node-affinity
-    image: nginx
-  tolerations:
-  - key: "project"
-    operator: "Equal"
-    value: "expense"
-    effect: "NoSchedule"
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -66,3 +12,27 @@ spec:
             operator: In
             values:
             - expense
+  containers:
+  - name: with-node-affinity
+    image: nginx
+  tolerations:
+  - key: "project"
+    operator: "Equal"
+    value: "expense"
+    effect: "NoSchedule"
+  - key: "project"
+    operator: "Exists"
+    effect: "NoSchedule"
+
+# To allow this pod to be scheduled on a tainted node, apply the taint to the desired node first:
+# 1. Get a list of nodes:
+#    kubectl get nodes
+# 2. Apply the taint to the target node:
+#    kubectl taint nodes ip-192-168-2-230.ec2.internal project=expense:NoSchedule
+# The tolerations defined above ensure the pod can still be scheduled on that node despite the taint.
+
+
+# First apply taint on specific node and then apply tolerations on it.
+# kubectl get nodes
+# kubectl taint nodes ip-192-168-42-153.ec2.internal project=expense:NoSchedule
+
