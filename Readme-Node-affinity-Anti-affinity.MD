@@ -1,4 +1,4 @@
-# Important Point on Node Affinity:
+* Important Point on Node Affinity:
 Node affinity:
 Required: Must schedule on matching nodes (requiredDuringSchedulingIgnoredDuringExecution).
 Preferred: Prefer matching nodes but allow others (preferredDuringSchedulingIgnoredDuringExecution).
@@ -29,10 +29,10 @@ Nodes with disktype=ssd AND region != us-west
 OR
 Nodes with cpu > 4
 
-# Important Point on Node Anti-Affinity:
+* Important Point on Node Anti-Affinity:
 Kubernetes doesn't have a nodeAntiAffinity field because all node selection is handled through nodeAffinity. Anti-affinity behavior is expressed using negative operators like NotIn or DoesNotExist within nodeAffinity.
 
-# How do you implement node anti-affinity in Kubernetes?
+* How do you implement node anti-affinity in Kubernetes?
  Use nodeAffinity with NotIn or DoesNotExist operators under required or preferred scheduling rules
 
  Node anti-affinity is done using nodeAffinity with:

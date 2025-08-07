@@ -38,3 +38,5 @@ kubectl describe node ip-192-168-2-230.ec2.internal | grep -i taint
 Apply the Pod
 kubectl apply -f pod.yaml
 kubectl get pod with-node-affinity -o wide
+
+* 
