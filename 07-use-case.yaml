@@ -64,3 +64,12 @@ spec:
       - name: web-app
         image: nginx:1.16-alpine
         
+# We have two conditions for web-servers.
+# store pods both will not schedule on same node based on podAntiAffinity.
+# web-store pods both will not schedule on same node based on podAntiAffinity.
+
+# node-1 has one store pod and one web-store pod
+# node-2 has one store pod and one web-stre pod 
+# redis-cache has two pods on different nodes.
+# web-server has two pods on different nodes.
+

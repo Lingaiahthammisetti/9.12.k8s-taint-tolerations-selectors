@@ -21,7 +21,6 @@ spec:
             values:
             - expense
 
-
 # To make taints + tolerations + affinity work together:
 
 # Taint the node:
@@ -30,8 +29,11 @@ spec:
 # Label the node:
 # kubectl label node my-node project=expense
 
-
-
+# 💡 Summary
+# 🔹 Labeling is for affinity (which node the pod wants).
+# 🔹 Tainting is for restricting which pods are allowed on the node.
+# 🔹 Toleration allows the pod to be scheduled on a tainted node.
+# ✅ So yes — both labeling and tainting are correct and needed in your use case.
 
 # First apply taint on specific node and then apply tolerations on it.
 # kubectl get nodes

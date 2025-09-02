@@ -16,14 +16,17 @@ spec:
   - name: with-node-anti-affinity
     image: nginx
 
-
-
 # Important Point on Node Anti-Affinity:
-
 # Kubernetes doesn't have a nodeAntiAffinity field because all node selection is handled through nodeAffinity. Anti-affinity behavior is expressed using negative operators like NotIn or DoesNotExist within nodeAffinity.
 
+# Label the node:
+# Quick checklist for this to work:
+# Label your node:
+# kubectl label node my-node project=expense
 
-# First apply taint on specific node and then apply tolerations on it.
-# kubectl get nodes
-# kubectl taint nodes ip-192-168-42-153.ec2.internal project=expense:NoSchedule
+# Create the pod with your YAML file:
+# kubectl apply -f your-pod.yaml
 
+# Check pod placement and node labels:
+# kubectl get pods -o wide
+# kubectl get nodes --show-labels

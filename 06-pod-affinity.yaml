@@ -60,3 +60,19 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: Always #keep this as always
+
+# kubectl apply -f pods.yaml
+# kubectl get pods -o wide
+# kubectl describe pod pod-1
+# kubectl describe pod pod-2
+# kubectl describe pod pod-3
+
+# Sample values:
+# kubernetes.io/hostname=node-1
+# topology.kubernetes.io/zone=us-east-1a
+# topology.kubernetes.io/region=us-east-1
+
+# Behavior Summary:
+# pod-1: Starts anywhere.
+# pod-2: Will be scheduled on the same node as pod-1.
+# pod-3: Will be scheduled on a different node than pod-1.

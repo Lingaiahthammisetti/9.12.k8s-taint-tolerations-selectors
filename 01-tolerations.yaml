@@ -81,3 +81,5 @@ spec:
 # # Optional Taint (depending on what you're testing):
 # kubectl taint nodes <node-name> key1=value1:NoSchedule
 # kubectl taint nodes <node-name> key1=value1:NoExecute
+
+Note: Tainting a node prevents pods from being scheduled unless they have matching tolerations. However, tolerations alone don't guarantee scheduling; adding conditions like nodeSelector helps target the specific node.

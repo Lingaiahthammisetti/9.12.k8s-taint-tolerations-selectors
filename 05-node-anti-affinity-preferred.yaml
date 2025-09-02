@@ -18,3 +18,15 @@ spec:
     image: nginx
 
 #Node Anti affinity also created using nodeAffinity only.
+
+# Label the node:
+# Quick checklist for this to work:
+# Label your node:
+# kubectl label node my-node project=expense
+
+# Create the pod with your YAML file:
+# kubectl apply -f your-pod.yaml
+
+# Check pod placement and node labels:
+# kubectl get pods -o wide
+# kubectl get nodes --show-labels
