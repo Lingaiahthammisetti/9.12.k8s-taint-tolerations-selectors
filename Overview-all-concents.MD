@@ -1,3 +1,19 @@
+
+
+\# Important Points on taint and tolerations and affinity
+
+All affinity and anti-affinity rules require labels (node or pod).
+
+Taints and tolerations are the only scheduling mechanism that does not rely on labels.
+
+
+
+
+
+
+
+
+
 1\. Taints and Tolerations
 
 What it is
@@ -373,4 +389,8 @@ One-line takeaway (perfect for interviews)
 All affinity and anti-affinity rules require labels (node or pod).
 
 Taints and tolerations are the only scheduling mechanism that does not rely on labels.
+
+
+
+
 
